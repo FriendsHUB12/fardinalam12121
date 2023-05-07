@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body{
+            background-color: black;
+        }
+        * {
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+}
+
+.login-box {
+	width: 300px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: #fff;
+}
+
+.login-box h2 {
+	margin: 0 0 20px;
+	padding: 0;
+	text-align: center;
+	font-size: 22px;
+}
+
+.user-box {
+	position: relative;
+}
+
+.user-box input {
+	width: 100%;
+	padding: 10px 0;
+	font-size: 16px;
+	color: #fff;
+	margin-bottom: 30px;
+	border: none;
+	border-bottom: 1px solid #fff;
+	outline: none;
+	background: transparent;
+}
+
+.user-box label {
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding: 10px 0;
+	font-size: 16px;
+	color: #fff;
+	pointer-events: none;
+	transition: 0.5s;
+}
+
+.user-box input:focus ~ label,
+.user-box input:valid ~ label {
+	top: -20px;
+	left: 0;
+	color: #03a9f4;
+	font-size: 12px;
+}
+
+input[type="submit"] {
+	background: transparent;
+	border: none;
+	color: #fff;
+	background: #03a9f4;
+	padding: 10px 20px;
+	cursor: pointer;
+	border-radius: 5px;
+	margin-bottom: 30px;
+}
+
+label{
+    font-size: 20px;
+}
+
+h1{
+    text-align: center;
+}
+div{
+    margin-top: 25px;
+}
+.submit{
+	margin-left: 60px;
+}
+    </style>
+
+	<title >Login Page</title>
+
+</head>
+<body>
+	<div class="login-box">
+		<h1>Login or Register</h1>
+		<form name="submit-to-google-sheet" method="post">
+			<div class="user-box">
+				<input type="email" name="email" required="">
+				<label>Email</label>
+			</div>
+			<div class="user-box">
+				<input type="password" name="password" required="">
+				<label>Password</label>
+			</div>
+				 </div class="submit">
+			<input type="submit" name="submit" value="Login">
+		</div>
+		</form>
+		<script>
+			
+			const scriptURL = 'https://script.google.com/macros/s/AKfycbzMaxIhlnFwnlzq5sIfhMwMKQDgpLFrbrOr2esjwTRGLOkiV6WKlmlEacNETfhsPVTU/exec'
+  const form = document.forms['submit-to-google-sheet']
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => console.log('Success!', response))
+      .catch(error => console.error('Error!', error.message))
+  })
+</script>
+	
+
+
+
+</body>
+</html>
